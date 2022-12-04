@@ -13,7 +13,6 @@ import UpdatePlace from './places/pages/UpdatePlace';
 import Auth from './user/pages/Auth';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
 import { AuthContext } from './shared/context/auth-context';
-import { SwitchTransition } from 'react-transition-group';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
