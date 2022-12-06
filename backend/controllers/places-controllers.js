@@ -1,4 +1,5 @@
-const { v4: uuidv4 } = require('uuid');
+const fs = require('fs');
+
 const { validationResult } = require('express-validator');
 const mongoose = require('mongoose');
 
@@ -72,7 +73,7 @@ const createPlace = async (req, res, next) => {
       lat: '41.11111',
       lng: '-99.2222'
     },
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu.jpg/1920px-View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu.jpg',
+    image: req.file.path,
     creator
   });
 
@@ -174,6 +175,8 @@ const deletePlace = async (req, res, next) => {
     return next(error);
   }
 
+  const imagePath = place.image;
+
   try {
     const session = await mongoose.startSession();
     session.startTransaction();
@@ -190,6 +193,10 @@ const deletePlace = async (req, res, next) => {
     return next(error);
   }
 
+  fs.unlink(imagePath, () => {
+    console.log(err);
+  });
+  
   res.status(200).json({ message: 'Deleted place.' });
 };
 
