@@ -86,7 +86,7 @@ const signup = async (req, res, next) => {
         userId: createdUser.id, 
         email: createdUser.email 
       }, 
-      'supersecret_dont_share', 
+      'supersecret_dont_share',  //private key
       { expiresIn: '1h' }
     );
   } catch (err) {
@@ -97,7 +97,7 @@ const signup = async (req, res, next) => {
     return next(error);
   }
 
- res.status(201).json({ userId: createdUserId, email: createdUser.email, token: token });
+ res.status(201).json({ userId: createdUser.id, email: createdUser.email, token: token });
 };
 
 const login = async (req, res, next) => {
@@ -117,7 +117,7 @@ const login = async (req, res, next) => {
   if (!existingUser) {
     const error = new HttpError(
       'Invalid credentials could not log you in.',
-      401
+      403
     );
     return next(error);
   }
@@ -136,7 +136,7 @@ const login = async (req, res, next) => {
   if (!isValidPassword) {
     const error = new HttpError(
       'Invalid credentials could not log you in.',
-      401
+      403
     );
     return next(error);
   }
