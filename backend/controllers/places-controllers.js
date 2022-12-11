@@ -64,15 +64,11 @@ const createPlace = async (req, res, next) => {
     );
   }
 
-  const { title, description, coordinates, address } = req.body;
+  const { title, description, address } = req.body;
   const createdPlace = new Place({
     title,
     description,
     address,
-    location: {
-      lat: '41.11111',
-      lng: '-99.2222'
-    },
     image: req.file.path,
     creator: req.userData.userId
   });
@@ -210,7 +206,7 @@ const deletePlace = async (req, res, next) => {
   }
 
   fs.unlink(imagePath, () => {
-    console.log(err);
+    console.log('image path');
   });
   
   res.status(200).json({ message: 'Deleted place.' });
