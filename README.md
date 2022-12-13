@@ -1,7 +1,7 @@
 # PlacesWeShare
 A website to share your places!
 
-Used: React.js, Node.js, MongoDB
+Used: React.js, Express.js, MongoDB
 <img width="1311" alt="Screenshot 2022-12-13 at 21 38 59" src="https://user-images.githubusercontent.com/43679838/207418831-8eadfed0-493d-4303-ac2c-0d104362d770.png">
 <img width="508" alt="Screenshot 2022-12-13 at 21 39 25" src="https://user-images.githubusercontent.com/43679838/207418847-8b00ac31-ada2-43ec-825a-73936fa159c0.png">
 <img width="446" alt="Screenshot 2022-12-13 at 21 40 03" src="https://user-images.githubusercontent.com/43679838/207418855-05034d8a-b951-4092-bfa6-d0eac8eb7b98.png">
